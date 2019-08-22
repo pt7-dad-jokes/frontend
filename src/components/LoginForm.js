@@ -15,18 +15,19 @@ function LoginForm({ errors, touched, values, status }) {
   return (
     <div>
       <Form>
-        <Field
-          component="input"
-          type="text"
-          name={["username", "email"]}
-          placeholder="Username/Email"
-        />
+        <Field component="input" type="text" name="email" placeholder="Email" />
+        {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+        )}
         <Field
           component="input"
           type="password"
           name="password"
           placeholder="Password"
         />
+        {touched.password && errors.password && (
+          <p className="error">{errors.password}</p>
+        )}
         <label className="checkbox-container">
           Remember Me
           <Field
@@ -36,7 +37,11 @@ function LoginForm({ errors, touched, values, status }) {
           />
           <span className="checkmark" />
         </label>
+        <button>Login</button>
       </Form>
+      <button>Sign Up</button>
+      <button>Forgot Password</button>
+      <button>Continue As Guest</button>
     </div>
   );
 }
@@ -51,13 +56,16 @@ const formikLoginHOC = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    species: Yup.string().required("not a good input"),
-    size: Yup.number().required(),
-    notes: Yup.string()
+    email: Yup.string()
+      .email()
+      .required(),
+    password: Yup.string().required(),
+    rememberMe: Yup.string()
   }),
+
   handleSubmit(values, { setStatus, resetForm }) {
     axios
-      .post("https://reqres.in/api/users", values)
+      .post("https://dadjokes-buildweeks.herokuapp.com/api/auth/login", values)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
