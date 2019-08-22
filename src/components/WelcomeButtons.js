@@ -2,7 +2,7 @@ import React from "react";
 
 function WelcomeButtons({ formState, setFormState }) {
   function changeDisplay() {
-    return formState != "signup" ? { display: "none" } : { display: "block" };
+    return formState !== "login" ? { display: "none" } : { display: "block" };
   }
 
   return (

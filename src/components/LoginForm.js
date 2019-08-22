@@ -10,15 +10,11 @@ function LoginForm({ errors, touched, values, status, formState }) {
     if (status) {
       setUsers([...users, status]);
     }
-  }, [status]);
+  }, [status, users]);
 
   return (
     <div
-      style={
-        formState === "forgotPassword"
-          ? { display: "none" }
-          : { display: "block" }
-      }
+      style={formState === "login" ? { display: "block" } : { display: "none" }}
     >
       <Form>
         <Field component="input" type="text" name="email" placeholder="Email" />
