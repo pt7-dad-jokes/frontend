@@ -4,6 +4,7 @@ import WelcomeButtons from "./WelcomeButtons";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 
 function WelcomeForms() {
+  // 3 form states login, forgotPassword and signup
   const [formState, setFormState] = useState("login");
 
   return (
