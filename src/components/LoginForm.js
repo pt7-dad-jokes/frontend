@@ -5,6 +5,7 @@ import axios from "axios";
 
 function LoginForm({ errors, touched, values, status }) {
   const [users, setUsers] = useState([]);
+  const [formState, setFormState] = useState("signup");
 
   useEffect(() => {
     if (status) {
@@ -13,7 +14,13 @@ function LoginForm({ errors, touched, values, status }) {
   }, [status]);
 
   return (
-    <div>
+    <div
+      style={
+        formState === "forgotPassword"
+          ? { display: "none" }
+          : { display: "block" }
+      }
+    >
       <Form>
         <Field component="input" type="text" name="email" placeholder="Email" />
         {touched.email && errors.email && (
@@ -40,7 +47,9 @@ function LoginForm({ errors, touched, values, status }) {
         <button>Login</button>
       </Form>
       <button>Sign Up</button>
-      <button>Forgot Password</button>
+      <button onClick={() => setFormState("forgotPassword")}>
+        Forgot Password
+      </button>
       <button>Continue As Guest</button>
     </div>
   );
