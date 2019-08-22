@@ -3,9 +3,8 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function LoginForm({ errors, touched, values, status }) {
+function LoginForm({ errors, touched, values, status, formState }) {
   const [users, setUsers] = useState([]);
-  const [formState, setFormState] = useState("signup");
 
   useEffect(() => {
     if (status) {
@@ -46,11 +45,6 @@ function LoginForm({ errors, touched, values, status }) {
         </label>
         <button>Login</button>
       </Form>
-      <button>Sign Up</button>
-      <button onClick={() => setFormState("forgotPassword")}>
-        Forgot Password
-      </button>
-      <button>Continue As Guest</button>
     </div>
   );
 }
