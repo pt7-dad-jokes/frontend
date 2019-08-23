@@ -9,8 +9,8 @@ function App() {
       <WelcomForms />
       <JokesCard
         username="Cody"
-        jokeSetup="Why did the chicken cross the road?"
-        jokePunchline="To get to the KFC"
+        jokeSetup="What concert costs just 45 cents?"
+        jokePunchline="50 Cent featuring Nickelback!"
       />
     </div>
   );
