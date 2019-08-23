@@ -1,12 +1,12 @@
-import React from 'react';
-import FormikRegForm from './components/RegForm.js'
-import './App.css';
+import React from "react";
+import "./App.css";
+import WelcomForms from "./components/WelcomeForms";
 
 function App() {
   return (
-      <div className="App">
-        <FormikRegForm />
-      </div>
+    <div className="App">
+      <WelcomForms />
+    </div>
   );
 }
 
