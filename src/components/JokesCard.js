@@ -55,7 +55,6 @@ const useStyles = makeStyles(theme => ({
 
 function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
   const classes = useStyles();
-  console.log(username);
   return (
     <div>
       <Card className={classes.card}>

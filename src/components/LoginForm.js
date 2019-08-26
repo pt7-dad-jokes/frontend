@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function LoginForm({ errors, touched, values, status, formState }) {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
-    }
-  }, [status, users]);
-
+function LoginForm({
+  errors,
+  touched,
+  values,
+  status,
+  formState,
+  setLoggedIn
+}) {
   return (
     <div
       style={formState === "login" ? { display: "block" } : { display: "none" }}
@@ -64,14 +63,14 @@ const formikLoginHOC = withFormik({
     rememberMe: Yup.string()
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
-    console.log(values);
+  handleSubmit(values, { props, setStatus, resetForm }) {
     axios
       .post("https://pt7-dad-jokes.herokuapp.com/api/auth/accounts", values)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
         resetForm();
+        props.setLoggedIn(true);
       })
       .catch(err => console.error("handleSubmit: catch: err: ", err));
   }

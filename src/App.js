@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import WelcomForms from "./components/WelcomeForms";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <WelcomForms />
+      {loggedIn ? (
+        <ProfilePage username="Cody" />
+      ) : (
+        <WelcomForms setLoggedIn={setLoggedIn} />
+      )}
     </div>
   );
 }
