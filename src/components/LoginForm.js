@@ -17,9 +17,14 @@ function LoginForm({ errors, touched, values, status, formState }) {
       style={formState === "login" ? { display: "block" } : { display: "none" }}
     >
       <Form>
-        <Field component="input" type="text" name="email" placeholder="Email" />
-        {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
+        <Field
+          component="input"
+          type="text"
+          name="account"
+          placeholder="Email/Username"
+        />
+        {touched.account && errors.account && (
+          <p className="error">{errors.account}</p>
         )}
         <Field
           component="input"
@@ -46,25 +51,23 @@ function LoginForm({ errors, touched, values, status, formState }) {
 }
 
 const formikLoginHOC = withFormik({
-  mapPropsToValues({ username, email, password, rememberMe }) {
+  mapPropsToValues({ account, password, rememberMe }) {
     return {
-      username: username || "",
-      email: email || "",
+      account: account || "",
       password: password || "",
       rememberMe: rememberMe || false
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(),
+    account: Yup.string().required(),
     password: Yup.string().required(),
     rememberMe: Yup.string()
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {
+    console.log(values);
     axios
-      .post("https://dadjokes-buildweeks.herokuapp.com/api/auth/login", values)
+      .post("https://pt7-dad-jokes.herokuapp.com/api/auth/accounts", values)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
