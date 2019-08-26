@@ -45,6 +45,7 @@ function ProfilePage({ username, jokesCreated }) {
     return favoriteJokePlaceholder.map(jokeData => {
       return (
         <JokesCard
+          onProfilePage={true}
           username={jokeData.username}
           jokeSetup={jokeData.setup}
           jokePunchline={jokeData.punchline}

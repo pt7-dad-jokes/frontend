@@ -47,6 +47,9 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     backgroundColor: red[500]
+  },
+  remove: {
+    display: "none"
   }
 }));
 
@@ -57,18 +60,24 @@ function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
     <div>
       <Card className={classes.card}>
         <div className={classes.cardTop}>
-          <IconButton aria-label="share">
+          <IconButton
+            aria-label="Delete Joke"
+            className={onProfilePage ? null : classes.remove}
+          >
             <DeleteIcon />
           </IconButton>
           <CardHeader
             className={classes.cardHeader}
             avatar={
-              <Avatar aria-label="recipe" className={classes.avatar}>
+              <Avatar aria-label="avatar name" className={classes.avatar}>
                 {username[0]}
               </Avatar>
             }
           />
-          <IconButton aria-label="share">
+          <IconButton
+            aria-label="Edit Joke"
+            className={onProfilePage ? null : classes.remove}
+          >
             <CreateIcon />
           </IconButton>
         </div>
@@ -85,10 +94,10 @@ function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="Like the joke">
             <MoodIcon />
           </IconButton>
-          <IconButton aria-label="add to favorites">
+          <IconButton aria-label="Dislike the joke">
             <MoodBadIcon />
           </IconButton>
           <IconButton aria-label="share">
