@@ -5,7 +5,7 @@ import { deepOrange, deepPurple } from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import axios from "axios";
+import JokesCard from "./JokesCard";
 
 const useStyles = makeStyles({
   avatar: {
@@ -33,24 +33,49 @@ const useStyles = makeStyles({
 });
 
 function ProfilePage({ username, jokesCreated }) {
-  const [showCreatedJokes, setShowCreatedJokes] = useState(false);
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
 
   function handleChange(event, newValue) {
+    console.log("Changing");
     setValue(newValue);
   }
 
-  axios
-    .get("https://pt7-dad-jokes.herokuapp.com/api/favorites")
-    .then(function(response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
+  function showFavoriteJokes() {
+    return favoriteJokePlaceholder.map(jokeData => {
+      return (
+        <JokesCard
+          username={jokeData.username}
+          jokeSetup={jokeData.setup}
+          jokePunchline={jokeData.punchline}
+        />
+      );
     });
+  }
+
+  //This is placeholder joke data to get functionality working
+  let favoriteJokePlaceholder = [
+    {
+      username: "Cody",
+      setup: "Knock knock",
+      punchline: "This is a placeholder joke don't open the door."
+    },
+    {
+      username: "AJ",
+      setup: "Knock knock",
+      punchline: "This is a placeholder joke don't open the door."
+    },
+    {
+      username: "Josh",
+      setup: "Knock knock",
+      punchline: "This is a placeholder joke don't open the door."
+    },
+    {
+      username: "Andre",
+      setup: "Knock knock",
+      punchline: "This is a placeholder joke don't open the door."
+    }
+  ];
 
   return (
     <div className={classes.container}>
@@ -68,6 +93,7 @@ function ProfilePage({ username, jokesCreated }) {
             <Tab label="My Favorited Jokes" />
           </Tabs>
         </Paper>
+        <div>{showFavoriteJokes()}</div>
       </div>
     </div>
   );

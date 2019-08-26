@@ -10,9 +10,10 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import { textAlign } from "@material-ui/system";
 import MoodIcon from "@material-ui/icons/Mood";
 import MoodBadIcon from "@material-ui/icons/MoodBad";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -20,6 +21,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     display: "flex",
     alignItems: "center"
+  },
+  cardHeader: {
+    padding: "16px 0px",
+    width: "40px"
+  },
+  cardTop: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    width: "80%"
   },
   media: {
     height: 0,
@@ -40,18 +50,29 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function JokesCard({ username, jokeSetup, jokePunchline }) {
+function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
   const classes = useStyles();
+  console.log(username);
   return (
     <div>
       <Card className={classes.card}>
-        <CardHeader
-          avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
-              {username[0]}
-            </Avatar>
-          }
-        />
+        <div className={classes.cardTop}>
+          <IconButton aria-label="share">
+            <DeleteIcon />
+          </IconButton>
+          <CardHeader
+            className={classes.cardHeader}
+            avatar={
+              <Avatar aria-label="recipe" className={classes.avatar}>
+                {username[0]}
+              </Avatar>
+            }
+          />
+          <IconButton aria-label="share">
+            <CreateIcon />
+          </IconButton>
+        </div>
+
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {jokeSetup}
