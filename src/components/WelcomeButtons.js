@@ -7,7 +7,7 @@ function WelcomeButtons({ formState, setFormState }) {
 
   return (
     <div style={changeDisplay()}>
-      <button>Sign Up</button>
+      <button onClick={() => setFormState("signup")}>Sign Up</button>
       <button onClick={() => setFormState("forgotPassword")}>
         Forgot Password
       </button>

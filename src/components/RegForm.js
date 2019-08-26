@@ -3,10 +3,13 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-
-function RegForm({ errors, touched, values}) {
+function RegForm({ errors, touched, values, formState }) {
   return (
-    <Form>
+    <Form
+      style={
+        formState === "signup" ? { display: "block" } : { display: "none" }
+      }
+    >
       <div>
         {touched.email && errors.email && <p>{errors.email}</p>}
         <Field type="email" name="email" placeholder="Email" />
@@ -20,14 +23,17 @@ function RegForm({ errors, touched, values}) {
         <Field type="password" name="password" placeholder="Password" />
       </div>
       <div>
-        {touched.confirmpassword && errors.confirmpassword && <p>{errors.confirmpassword}</p>}
-        <Field type="password" name="confirmpassword" placeholder="Confirm Password" />
+        {touched.confirmpassword && errors.confirmpassword && (
+          <p>{errors.confirmpassword}</p>
+        )}
+        <Field
+          type="password"
+          name="confirmpassword"
+          placeholder="Confirm Password"
+        />
       </div>
-      <button type = "submit">
-        Register Now!
-      </button>
+      <button type="submit">Register Now!</button>
     </Form>
-    
   );
 }
 
@@ -41,14 +47,23 @@ const FormikRegForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().email("Email not valid").required('Please enter an email'),
-    username: Yup.string().required('Please enter a username'),
-    password: Yup.string().min(6, "Password must be 6 characters or longer").required('Please enter a password'),
-    confirmpassword: Yup.string().min(6, "Password must be 6 characters or longer").required('Please confirm passoword')
+    email: Yup.string()
+      .email("Email not valid")
+      .required("Please enter an email"),
+    username: Yup.string().required("Please enter a username"),
+    password: Yup.string()
+      .min(6, "Password must be 6 characters or longer")
+      .required("Please enter a password"),
+    confirmpassword: Yup.string()
+      .min(6, "Password must be 6 characters or longer")
+      .required("Please confirm passoword")
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
-      .post("https://dadjokes-buildweeks.herokuapp.com/api/auth/register", values)
+      .post(
+        "https://dadjokes-buildweeks.herokuapp.com/api/auth/register",
+        values
+      )
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
@@ -56,7 +71,6 @@ const FormikRegForm = withFormik({
       })
       .catch(err => console.error("handleSubmit: catch: err: ", err));
   }
-
 })(RegForm);
 
 export default FormikRegForm;
