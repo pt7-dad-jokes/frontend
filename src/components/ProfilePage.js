@@ -97,8 +97,8 @@ function ProfilePage({ username, jokesCreated }) {
             onChange={handleChange}
             aria-label="disabled tabs example"
           >
-            <Tab label="My Created Jokes" />
-            <Tab label="My Favorited Jokes" />
+            <Tab label="Joke Wallet" />
+            <Tab label="Favorites" />
           </Tabs>
         </Paper>
         <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
