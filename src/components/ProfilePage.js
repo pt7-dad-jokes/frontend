@@ -48,7 +48,7 @@ function ProfilePage({ username, jokesCreated }) {
   }, []);
 
   useEffect(() => {
-    axios.get(`/by_user`).then(res => {
+    axios.get(`/jokes/by_user`).then(res => {
       console.log(res.data);
       setCreatedJokeData(res.data);
     });
@@ -76,7 +76,7 @@ function ProfilePage({ username, jokesCreated }) {
       ? createdJokeData.map(jokeData => {
           return (
             <JokesCard
-              didUserCreate={false}
+              didUserCreate={value === 0}
               jokeSetup={jokeData.setup}
               jokePunchline={jokeData.punchline}
             />
