@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function LoginForm({ errors, touched, values, status, formState }) {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
-    }
-  }, [status, users]);
-
+function LoginForm(props) {
+  const { errors, touched, values, formState } = props;
   return (
     <div
       style={formState === "login" ? { display: "block" } : { display: "none" }}
     >
       <Form>
-        <Field component="input" type="text" name="email" placeholder="Email" />
-        {touched.email && errors.email && (
-          <p className="error">{errors.email}</p>
+        <Field
+          component="input"
+          type="text"
+          name="account"
+          placeholder="Email/Username"
+        />
+        {touched.account && errors.account && (
+          <p className="error">{errors.account}</p>
         )}
         <Field
           component="input"
@@ -46,29 +44,27 @@ function LoginForm({ errors, touched, values, status, formState }) {
 }
 
 const formikLoginHOC = withFormik({
-  mapPropsToValues({ username, email, password, rememberMe }) {
+  mapPropsToValues({ account, password, rememberMe }) {
     return {
-      username: username || "",
-      email: email || "",
+      account: account || "",
       password: password || "",
       rememberMe: rememberMe || false
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(),
+    account: Yup.string().required(),
     password: Yup.string().required(),
     rememberMe: Yup.string()
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { props, setStatus, resetForm }) {
     axios
-      .post("https://dadjokes-buildweeks.herokuapp.com/api/auth/login", values)
+      .post("/auth/accounts", values)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
         resetForm();
+        props.setLoggedIn(true);
       })
       .catch(err => console.error("handleSubmit: catch: err: ", err));
   }
