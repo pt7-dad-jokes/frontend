@@ -3,15 +3,16 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import "./AddJoke.css"
 
-function AddJokeForm({ values, errors, touched, isSubmitting }) {
+function AddJokeForm({ values, errors, touched}) {
+ 
   return (
     <Form>
       <h1>Create your very own Dad Jokes</h1>
       <label>
         <Field
           type="checkbox"
-          id="twolinercontent"
           name="twoliner"
           checked={values.twoliner}
         />
@@ -42,10 +43,9 @@ function AddJokeForm({ values, errors, touched, isSubmitting }) {
       <Field
         component="textarea"
         type="text"
-        id="twolineranswer"
         name="joke_answer"
         placeholder="Joke Answer"
-        hidden
+        hidden={!values.twoliner}
       />
       {touched.joke_answer && errors.joke_answer && (
         <p className="error">{errors.joke_answer}</p>
