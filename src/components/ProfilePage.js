@@ -7,7 +7,6 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import JokesCard from "./JokesCard";
 import axios from "axios";
-import { create } from "jss";
 
 const useStyles = makeStyles({
   avatar: {
@@ -64,7 +63,7 @@ function ProfilePage({ username, jokesCreated }) {
       ? favoriteJokeData.map(jokeData => {
           return (
             <JokesCard
-              didUserCreate={false}
+              didUserCreate={value === 0}
               jokeSetup={jokeData.setup}
               jokePunchline={jokeData.punchline}
             />
