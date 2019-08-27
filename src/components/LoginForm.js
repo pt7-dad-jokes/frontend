@@ -3,14 +3,8 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-function LoginForm({
-  errors,
-  touched,
-  values,
-  status,
-  formState,
-  setLoggedIn
-}) {
+function LoginForm(props) {
+  const { errors, touched, values, formState } = props;
   return (
     <div
       style={formState === "login" ? { display: "block" } : { display: "none" }}
@@ -65,7 +59,7 @@ const formikLoginHOC = withFormik({
 
   handleSubmit(values, { props, setStatus, resetForm }) {
     axios
-      .post("https://pt7-dad-jokes.herokuapp.com/api/auth/accounts", values)
+      .post("/auth/accounts", values)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
