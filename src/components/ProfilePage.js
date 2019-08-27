@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import { deepOrange, deepPurple } from "@material-ui/core/colors";
@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import JokesCard from "./JokesCard";
+import axios from "axios";
 
 const useStyles = makeStyles({
   avatar: {
@@ -33,8 +34,15 @@ const useStyles = makeStyles({
 });
 
 function ProfilePage({ username, jokesCreated }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+
   const classes = useStyles();
+
+  useEffect(() => {
+    axios.get(`/favorites`).then(res => {
+      console.log(res.data);
+    });
+  });
 
   function handleChange(event, newValue) {
     console.log("Changing");
