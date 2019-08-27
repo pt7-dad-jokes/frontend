@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
+function JokesCard({ didUserCreate, username, jokeSetup, jokePunchline }) {
   const classes = useStyles();
   return (
     <div>
@@ -61,7 +61,7 @@ function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
         <div className={classes.cardTop}>
           <IconButton
             aria-label="Delete Joke"
-            className={onProfilePage ? null : classes.remove}
+            className={didUserCreate ? null : classes.remove}
           >
             <DeleteIcon />
           </IconButton>
@@ -69,13 +69,13 @@ function JokesCard({ onProfilePage, username, jokeSetup, jokePunchline }) {
             className={classes.cardHeader}
             avatar={
               <Avatar aria-label="avatar name" className={classes.avatar}>
-                {username[0]}
+                {username !== undefined ? username[0] : null}
               </Avatar>
             }
           />
           <IconButton
             aria-label="Edit Joke"
-            className={onProfilePage ? null : classes.remove}
+            className={didUserCreate ? null : classes.remove}
           >
             <CreateIcon />
           </IconButton>

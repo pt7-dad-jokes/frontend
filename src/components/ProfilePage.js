@@ -7,6 +7,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import JokesCard from "./JokesCard";
 import axios from "axios";
+import { create } from "jss";
 
 const useStyles = makeStyles({
   avatar: {
@@ -35,56 +36,55 @@ const useStyles = makeStyles({
 
 function ProfilePage({ username, jokesCreated }) {
   const [value, setValue] = useState(0);
+  const [favoriteJokeData, setFavoriteJokeData] = useState([{}]);
+  const [createdJokeData, setCreatedJokeData] = useState([{}]);
 
   const classes = useStyles();
 
   useEffect(() => {
     axios.get(`/favorites`).then(res => {
       console.log(res.data);
+      setFavoriteJokeData(res.data);
     });
-  });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`/by_user`).then(res => {
+      console.log(res.data);
+      setCreatedJokeData(res.data);
+    });
+  }, []);
 
   function handleChange(event, newValue) {
-    console.log("Changing");
     setValue(newValue);
   }
 
   function showFavoriteJokes() {
-    return favoriteJokePlaceholder.map(jokeData => {
-      return (
-        <JokesCard
-          onProfilePage={true}
-          username={jokeData.username}
-          jokeSetup={jokeData.setup}
-          jokePunchline={jokeData.punchline}
-        />
-      );
-    });
+    return Object.keys(favoriteJokeData[0]).length !== 0
+      ? favoriteJokeData.map(jokeData => {
+          return (
+            <JokesCard
+              didUserCreate={false}
+              jokeSetup={jokeData.setup}
+              jokePunchline={jokeData.punchline}
+            />
+          );
+        })
+      : null;
   }
-
-  //This is placeholder joke data to get functionality working
-  let favoriteJokePlaceholder = [
-    {
-      username: "Cody",
-      setup: "Knock knock",
-      punchline: "This is a placeholder joke don't open the door."
-    },
-    {
-      username: "AJ",
-      setup: "Knock knock",
-      punchline: "This is a placeholder joke don't open the door."
-    },
-    {
-      username: "Josh",
-      setup: "Knock knock",
-      punchline: "This is a placeholder joke don't open the door."
-    },
-    {
-      username: "Andre",
-      setup: "Knock knock",
-      punchline: "This is a placeholder joke don't open the door."
-    }
-  ];
+  function showCreatedJokes() {
+    return Object.keys(createdJokeData[0]).length !== 0
+      ? createdJokeData.map(jokeData => {
+          return (
+            <JokesCard
+              didUserCreate={false}
+              jokeSetup={jokeData.setup}
+              jokePunchline={jokeData.punchline}
+            />
+          );
+        })
+      : null;
+  }
 
   return (
     <div className={classes.container}>
@@ -98,11 +98,11 @@ function ProfilePage({ username, jokesCreated }) {
             onChange={handleChange}
             aria-label="disabled tabs example"
           >
-            {/* <Tab label="My Created Jokes" /> */}
+            <Tab label="My Created Jokes" />
             <Tab label="My Favorited Jokes" />
           </Tabs>
         </Paper>
-        <div>{showFavoriteJokes()}</div>
+        <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
       </div>
     </div>
   );
