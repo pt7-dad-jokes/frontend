@@ -3,6 +3,7 @@ import "./App.css";
 import WelcomForms from "./components/WelcomeForms";
 import ProfilePage from "./components/ProfilePage";
 
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
 
@@ -13,6 +14,7 @@ function App() {
       ) : (
         <WelcomForms setLoggedIn={setLoggedIn} />
       )}
+
     </div>
   );
 }
