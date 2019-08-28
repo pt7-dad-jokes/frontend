@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import WelcomForms from "./components/WelcomeForms";
 import ProfilePage from "./components/ProfilePage";
+import AddJokeForm from "./components/AddJokeForm";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
@@ -13,6 +14,8 @@ function App() {
       ) : (
         <WelcomForms setLoggedIn={setLoggedIn} />
       )}
+<AddJokeForm/>
+
     </div>
   );
 }

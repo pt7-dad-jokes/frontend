@@ -3,10 +3,10 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import "./AddJoke.css"
 
-function AddJokeForm({ values, errors, touched}) {
- 
+
+function AddJokeForm({ values, errors, touched }) {
+
   return (
     <Form>
       <h1>Create your very own Dad Jokes</h1>
@@ -19,7 +19,12 @@ function AddJokeForm({ values, errors, touched}) {
         Two Liner Dad Joke
       </label>
       <label>
-        <Field type="checkbox" name="privjoke" checked={values.privjoke} />
+        <Field 
+          type="checkbox" 
+          name="privjoke"
+          checked={values.privjoke}
+          
+        />
         Private Joke
       </label>
       <Field
@@ -55,12 +60,13 @@ function AddJokeForm({ values, errors, touched}) {
   );
 }
 const formikHOC = withFormik({
-  mapPropsToValues({ twoliner, privjoke, joke_title, joke_content }) {
+  mapPropsToValues({ twoliner, privjoke, joke_title, joke_content, joke_answer }) {
     return {
       twoliner: twoliner || false,
       privjoke: privjoke || false,
       joke_title: joke_title || "",
-      joke_content: joke_content || ""
+      joke_content: joke_content || "",
+      joke_answer: joke_answer || ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -69,7 +75,12 @@ const formikHOC = withFormik({
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
-      .post("", values)
+      .post("/jokes", {
+        title: values.joke_title,
+        setup: values.joke_content,
+        punchline: values.twoliner || "",
+        isPublic: !values.privJoke
+       })
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
