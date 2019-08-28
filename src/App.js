@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
 import WelcomForms from "./components/WelcomeForms";
-import ProfilePage from "./components/ProfilePage";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
 
   return (
     <div className="App">
-      {loggedIn ? (
-        <ProfilePage username="Cody" />
-      ) : (
-        <WelcomForms setLoggedIn={setLoggedIn} />
-      )}
+      {loggedIn ? <Dashboard /> : <WelcomForms setLoggedIn={setLoggedIn} />}
     </div>
   );
 }
