@@ -6,6 +6,7 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token"));
 
+  console.log(localStorage.getItem("token"));
   return (
     <div className="App">
       {loggedIn ? <Dashboard /> : <WelcomForms setLoggedIn={setLoggedIn} />}

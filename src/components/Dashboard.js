@@ -7,10 +7,17 @@ function Dashboard() {
   const [publicJokeData, setPublicJokeData] = useState([{}]);
 
   useEffect(() => {
-    axios.get(`/jokes`).then(res => {
-      console.log(res.data);
-      setPublicJokeData(res.data);
-    });
+    axios
+      .get(`/jokes`)
+      .then(res => {
+        if (res !== undefined) {
+          console.log(res.data);
+          setPublicJokeData(res.data);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   function showPublicJokes() {
@@ -26,7 +33,7 @@ function Dashboard() {
     });
   }
 
-  return <div>{showPublicJokes}</div>;
+  return <div>{showPublicJokes()}</div>;
 }
 
 export default Dashboard;
