@@ -6,13 +6,17 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import HomeIcon from '@material-ui/icons/Home';
-import AddJokeButton from "./AddJokeButton"
-import SignoutButton from "./SignOutButton"
+import AddJokeButton from './AddJokeButton';
+import SignoutButton from './SignOutButton';
 import styled from 'styled-components';
 
 
 const BorderDiv = styled.div`
     border-bottom: 2px solid teal;
+`;
+
+const IconDiv = styled.div`
+    padding-top 5px;
 `;
 
 function TabPanel(props) {
@@ -75,9 +79,8 @@ export default function VerticalTabs() {
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
             >
-                <BorderDiv><Tab icon={<HomeIcon />} label="Home" {...a11yProps(0)} /></BorderDiv>
+                <BorderDiv><Tab label={<div><HomeIcon style={{ display: "inline-block", marginBottom:"-6px" }} />Home</div>} {...a11yProps(2)} /></BorderDiv>
                 <BorderDiv><Tab label="Profile" {...a11yProps(1)} /> </BorderDiv>
-                <BorderDiv><Tab label={<div><HomeIcon />Home</div>} {...a11yProps(2)} /></BorderDiv>
                 <AddJokeButton />
                 <SignoutButton />
             </Tabs>
