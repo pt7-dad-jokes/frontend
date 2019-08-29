@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JokesCard from "./JokesCard";
 import TopBar from "./TopBar";
+import VerticalNav from "./VerticalNav";
 import axios from "axios";
 
 function Dashboard() {
@@ -39,6 +40,7 @@ function Dashboard() {
     <div>
       <div>
         <TopBar></TopBar>
+        <VerticalNav />
       </div>
       {showPublicJokes()}
     </div>

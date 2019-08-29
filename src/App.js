@@ -15,8 +15,12 @@ function App() {
   console.log(localStorage.getItem("token"));
   return (
     <div className="App">
-      {loggedIn ? <Dashboard /> : <WelcomForms setLoggedIn={setLoggedIn} />}
-      <VerticalNav />
+      {loggedIn ? (
+        <ProfilePage username="U" />
+      ) : (
+        <WelcomForms setLoggedIn={setLoggedIn} />
+      )}
+      {/* <VerticalNav /> */}
       <Route exact path="/auth/accounts" component={LoginForm}></Route>
       <Route path="/auth/accounts" component={RegForm}></Route>
       <Route path="/jokes" component={Dashboard}></Route>
