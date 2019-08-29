@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JokesCard from "./JokesCard";
+import TopBar from "./TopBar";
 import axios from "axios";
 
 function Dashboard() {
@@ -33,7 +34,14 @@ function Dashboard() {
     });
   }
 
-  return <div>{showPublicJokes()}</div>;
+  return (
+    <div>
+      <div>
+        <TopBar></TopBar>
+      </div>
+      {showPublicJokes()}
+    </div>
+  );
 }
 
 export default Dashboard;
