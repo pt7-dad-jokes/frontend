@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import WelcomForms from "./components/WelcomeForms";
-import VerticalNav from "./components/VerticalNav";
+// import VerticalNav from "./components/VerticalNav";
 import LoginForm from "./components/LoginForm";
 import RegForm from "./components/RegForm";
 import AddJoke from "./components/AddJokeForm";
