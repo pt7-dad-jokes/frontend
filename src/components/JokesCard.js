@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -14,6 +14,7 @@ import MoodIcon from "@material-ui/icons/Mood";
 import MoodBadIcon from "@material-ui/icons/MoodBad";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -48,13 +49,41 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500]
   },
+  redHeart: {
+    color: "red"
+  },
   remove: {
     display: "none"
   }
 }));
 
-function JokesCard({ didUserCreate, username, jokeSetup, jokePunchline }) {
+function JokesCard({
+  jokeID,
+  didUserCreate,
+  username,
+  jokeSetup,
+  jokePunchline
+}) {
   const classes = useStyles();
+  const [isFavorite, setIsFavorite] = useState("false");
+
+  console.log(isFavorite + " " + jokeID);
+
+  function toggleFavorite() {
+    axios
+      .post(`favorites/toggle/${jokeID}`)
+      .then(res => {
+        if (res !== undefined) {
+          console.log("Favorite: " + jokeID + " " + res.data);
+          setIsFavorite(res.data);
+          console.log(isFavorite);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <Card className={classes.card}>
@@ -90,7 +119,11 @@ function JokesCard({ didUserCreate, username, jokeSetup, jokePunchline }) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          <IconButton
+            className={isFavorite === "OK" ? classes.redHeart : null}
+            onClick={toggleFavorite}
+            aria-label="add to favorites"
+          >
             <FavoriteIcon />
           </IconButton>
           <IconButton aria-label="Like the joke">

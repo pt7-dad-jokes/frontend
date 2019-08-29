@@ -25,6 +25,7 @@ function Dashboard() {
     return publicJokeData.map(jokeData => {
       return (
         <JokesCard
+          jokeID={jokeData.id}
           username={jokeData.creator}
           didUserCreate={false}
           jokeSetup={jokeData.setup}
