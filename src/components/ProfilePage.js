@@ -6,7 +6,9 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import JokesCard from "./JokesCard";
+import TopBar from "./TopBar";
 import axios from "axios";
+import VerticalNav from "./VerticalNav";
 
 const useStyles = makeStyles({
   avatar: {
@@ -86,22 +88,26 @@ function ProfilePage({ username, jokesCreated }) {
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.profileContainer}>
-        <Avatar className={classes.orangeAvatar}>{username[0]}</Avatar>
-        <Paper square>
-          <Tabs
-            value={value}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={handleChange}
-            aria-label="disabled tabs example"
-          >
-            <Tab label="Joke Wallet" />
-            <Tab label="Favorites" />
-          </Tabs>
-        </Paper>
-        <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
+    <div>
+      <TopBar />
+      <VerticalNav />
+      <div className={classes.container}>
+        <div className={classes.profileContainer}>
+          <Avatar className={classes.orangeAvatar}>{username[0]}</Avatar>
+          <Paper square>
+            <Tabs
+              value={value}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChange}
+              aria-label="disabled tabs example"
+            >
+              <Tab label="Joke Wallet" />
+              <Tab label="Favorites" />
+            </Tabs>
+          </Paper>
+          <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
+        </div>
       </div>
     </div>
   );
