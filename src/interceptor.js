@@ -8,9 +8,18 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
-axios.interceptors.response.use(res => {
-  if (res.data.token) {
-    localStorage.setItem("token", res.data.token);
+axios.interceptors.response.use(
+  res => {
+    if (res.data.token) {
+      localStorage.setItem("token", res.data.token);
+    }
+    return res;
+  },
+  err => {
+    if (err.response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.reload();
+    }
+    return err;
   }
-  return res;
-});
+);
