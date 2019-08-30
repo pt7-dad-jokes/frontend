@@ -20,8 +20,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     backgroundColor: "white",
     flexDirection: "column",
-    width: "30%",
-    margin: "auto"
+    width: "35%",
+    margin: "auto",
+    borderRadius: "5px"
   },
   signUpContainer: {
     display: "flex",
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     margin: "25px auto 0 auto;",
     border: "solid 1px gray",
     background: "Gainsboro",
-    width: "46%",
+    width: "55%",
     height: "50px",
     paddingLeft: "10px",
     fontSize: "1rem"
@@ -47,9 +48,19 @@ const useStyles = makeStyles(theme => ({
   },
   forgotPasswordButton: {
     margin: "auto",
-    width: "50%",
+    width: "58%",
     textAlign: "left",
-    padding: "0"
+    padding: "0",
+    color: "gray"
+  },
+  loginButton: {
+    margin: "0px auto 55px auto;",
+    border: "solid 1px gray",
+    background: "Gainsboro",
+    width: "31%",
+    padding: "11px 15px",
+    fontSize: "1rem",
+    borderRadius: "7px"
   }
 }));
 
@@ -70,7 +81,9 @@ function LoginForm(props) {
       >
         <h1 className={classes.title}>Hi Hungry, I'm Dad!</h1>
         <Form className={classes.formContainer}>
-          <h3 style={{ marginTop: "38px", fontSize: "2rem" }}>
+          <h3
+            style={{ marginTop: "38px", fontSize: "2rem", marginBottom: "7px" }}
+          >
             Welcome back, kiddo!
           </h3>
           <div className={classes.signUpContainer}>
@@ -107,10 +120,10 @@ function LoginForm(props) {
               onClick={() => setFormState("forgotPassword")}
               className={classes.forgotPasswordButton}
             >
-              Forgot Password
+              Forgot Password?
             </button>
           </div>
-          <label className="checkbox-container">
+          {/* <label className="checkbox-container">
             Remember Me
             <Field
               type="checkbox"
@@ -118,8 +131,8 @@ function LoginForm(props) {
               checked={values.rememberMe}
             />
             <span className="checkmark" />
-          </label>
-          <button>Login</button>
+          </label> */}
+          <button className={classes.loginButton}>Login</button>
         </Form>
       </div>
     </div>
