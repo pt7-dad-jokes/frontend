@@ -81,12 +81,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginForm(props) {
-  const { errors, touched, values, formState, setFormState } = props;
+  const { errors, touched, formState, setFormState } = props;
   const classes = useStyles();
 
-  function changeDisplay() {
-    return formState !== "login" ? { display: "none" } : { display: "block" };
-  }
+  // function changeDisplay() {
+  //   return formState !== "login" ? { display: "none" } : { display: "block" };
+  // }
 
   return (
     <div className={classes.logginContainer}>
