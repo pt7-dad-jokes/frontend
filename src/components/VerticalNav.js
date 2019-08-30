@@ -9,7 +9,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddJokeButton from "./AddJokeButton";
 import SignoutButton from "./SignOutButton";
 import styled from "styled-components";
-
+import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const BorderDiv = styled.div`
   border-bottom: 2px solid teal;
 `;
@@ -79,6 +80,7 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <BorderDiv>
+        <NavLink to={`/`}>
           <Tab
             label={
               <div>
@@ -90,12 +92,19 @@ export default function VerticalTabs() {
             }
             {...a11yProps(2)}
           />
+          </NavLink>
         </BorderDiv>
         <BorderDiv>
+        <NavLink to={`/auth/accounts`}>
           <Tab label="Profile" {...a11yProps(1)} />{" "}
+          </NavLink>
         </BorderDiv>
+        <Link to={`/jokes`}>
         <AddJokeButton />
+        </Link>
+        <NavLink to={`/signedout`}>
         <SignoutButton />
+        </NavLink>
       </Tabs>
     </div>
   );
