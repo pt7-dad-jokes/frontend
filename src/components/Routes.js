@@ -17,7 +17,7 @@ function Routes(){
             path="/auth/accounts"
             render={props => <ProfilePage {...props} username="U" />}
         ></Route>
-        <Route path="/jokes" component={AddJoke}></Route>
+        {/* <Route path="/jokes" component={AddJoke}></Route> */}
         <Route path="/signedout" component={WelcomeForms}></Route>
         </div>
     );

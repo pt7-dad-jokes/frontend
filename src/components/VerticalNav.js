@@ -11,6 +11,7 @@ import SignoutButton from "./SignOutButton";
 import styled from "styled-components";
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 const BorderDiv = styled.div`
   border-bottom: 2px solid teal;
 `;
@@ -99,9 +100,9 @@ export default function VerticalTabs() {
           <Tab label="Profile" {...a11yProps(1)} />{" "}
           </NavLink>
         </BorderDiv>
-        <Link to={`/jokes`}>
+        {/* <Link to={`/jokes`}> */}
         <AddJokeButton />
-        </Link>
+        {/* </Link> */}
         <NavLink to={`/signedout`}>
         <SignoutButton />
         </NavLink>

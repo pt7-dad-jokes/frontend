@@ -13,10 +13,10 @@ function AddJokeForm({ values, errors, touched }) {
       <label>
         <Field
           type="checkbox"
-          name="twoliner"
-          checked={values.twoliner}
+          name="oneliner"
+          checked={values.oneliner}
         />
-        Two Liner Dad Joke
+        One Liner Dad Joke
       </label>
       <label>
         <Field 
@@ -50,7 +50,7 @@ function AddJokeForm({ values, errors, touched }) {
         type="text"
         name="joke_answer"
         placeholder="Joke Answer"
-        hidden={!values.twoliner}
+        hidden={values.oneliner}
       />
       {touched.joke_answer && errors.joke_answer && (
         <p className="error">{errors.joke_answer}</p>
@@ -60,9 +60,9 @@ function AddJokeForm({ values, errors, touched }) {
   );
 }
 const formikHOC = withFormik({
-  mapPropsToValues({ twoliner, privjoke, joke_title, joke_content, joke_answer }) {
+  mapPropsToValues({ oneliner, privjoke, joke_title, joke_content, joke_answer }) {
     return {
-      twoliner: twoliner || false,
+      oneliner: oneliner || false,
       privjoke: privjoke || false,
       joke_title: joke_title || "",
       joke_content: joke_content || "",
