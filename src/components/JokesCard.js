@@ -31,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "baseline",
     alignSelf: "baseline",
-    width: "5%",
     marginLeft: "2%"
   },
   cardContent: {
