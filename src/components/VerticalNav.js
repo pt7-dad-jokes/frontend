@@ -10,7 +10,6 @@ import AddJokeButton from "./AddJokeButton";
 import SignoutButton from "./SignOutButton";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const BorderDiv = styled.div`
   border-bottom: 2px solid teal;
