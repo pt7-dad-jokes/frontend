@@ -9,8 +9,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddJokeButton from "./AddJokeButton";
 import SignoutButton from "./SignOutButton";
 import styled from "styled-components";
-import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 const BorderDiv = styled.div`
   border-bottom: 2px solid teal;
 `;
@@ -51,7 +51,6 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: "flex",
     height: 450
@@ -80,30 +79,30 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <BorderDiv>
-        <NavLink to={`/`}>
-          <Tab
-            label={
-              <div>
-                <HomeIcon
-                  style={{ display: "inline-block", marginBottom: "-6px" }}
-                />
-                Home
-              </div>
-            }
-            {...a11yProps(2)}
-          />
+          <NavLink to={`/`}>
+            <Tab
+              label={
+                <div>
+                  <HomeIcon
+                    style={{ display: "inline-block", marginBottom: "-6px" }}
+                  />
+                  Home
+                </div>
+              }
+              {...a11yProps(2)}
+            />
           </NavLink>
         </BorderDiv>
         <BorderDiv>
-        <NavLink to={`/auth/accounts`}>
-          <Tab label="Profile" {...a11yProps(1)} />{" "}
+          <NavLink to={`/auth/accounts`}>
+            <Tab label="Profile" {...a11yProps(1)} />{" "}
           </NavLink>
         </BorderDiv>
         <Link to={`/jokes`}>
-        <AddJokeButton />
+          <AddJokeButton />
         </Link>
         <NavLink to={`/signedout`}>
-        <SignoutButton />
+          <SignoutButton />
         </NavLink>
       </Tabs>
     </div>
