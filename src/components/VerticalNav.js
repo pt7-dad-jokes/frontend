@@ -57,7 +57,8 @@ const useStyles = makeStyles(theme => ({
     width: "20%"
   },
   tabs: {
-    width: "100%"
+    width: "100%",
+    marginTop: "70px"
   }
 }));
 
@@ -80,12 +81,22 @@ export default function VerticalTabs() {
         className={classes.tabs}
       >
         <BorderDiv>
-          <NavLink to={`/`}>
+          <NavLink to={`/`} style={{ textDecoration: "none" }}>
             <Tab
               label={
-                <div>
+                <div
+                  style={{
+                    fontSize: "1.2rem",
+                    color: "black"
+                  }}
+                >
                   <HomeIcon
-                    style={{ display: "inline-block", marginBottom: "-6px" }}
+                    style={{
+                      display: "inline-block",
+                      marginBottom: "-8px",
+                      color: "black",
+                      fontSize: "2.75rem"
+                    }}
                   />
                   Home
                 </div>
@@ -95,8 +106,15 @@ export default function VerticalTabs() {
           </NavLink>
         </BorderDiv>
         <BorderDiv>
-          <NavLink to={`/auth/accounts`}>
-            <Tab label="Profile" {...a11yProps(1)} />{" "}
+          <NavLink to={`/auth/accounts`} style={{ textDecoration: "none" }}>
+            <Tab
+              label="Profile"
+              {...a11yProps(1)}
+              style={{
+                fontSize: "1.2rem",
+                color: "black"
+              }}
+            />{" "}
           </NavLink>
         </BorderDiv>
         <Link to={`/jokes`}>

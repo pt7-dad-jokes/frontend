@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "row",
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#FFE6CC"
+    backgroundColor: "#FFE6CC",
+    border: "solid Silver 1px"
   },
   cardHeader: {
     padding: "16px 16px",
