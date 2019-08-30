@@ -13,8 +13,7 @@ const useStyles = makeStyles(theme => ({
   jokesContainer: {
     display: "flex",
     flexDirection: "column",
-    width: "60%",
-    marginTop: "15px"
+    width: "60%"
   }
 }));
 
