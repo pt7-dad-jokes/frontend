@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   },
   forgotPasswordButton: {
     margin: "10px auto",
-    width: "58%",
+    width: "50%",
     textAlign: "left",
     padding: "0",
     color: "gray",
