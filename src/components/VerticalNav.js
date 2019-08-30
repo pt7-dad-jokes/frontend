@@ -53,10 +53,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     display: "flex",
-    height: 450
+    height: 450,
+    width: "20%"
   },
   tabs: {
-    width: 200
+    width: "100%"
   }
 }));
 
