@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
   card: {
     flexDirection: "row",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#FFE6CC"
   },
   cardHeader: {
     padding: "16px 16px",
@@ -29,7 +30,9 @@ const useStyles = makeStyles(theme => ({
   cardTop: {
     display: "flex",
     justifyContent: "baseline",
-    alignSelf: "baseline"
+    alignSelf: "baseline",
+    width: "5%",
+    marginLeft: "2%"
   },
   cardContent: {
     display: "flex",
@@ -40,7 +43,9 @@ const useStyles = makeStyles(theme => ({
     padding: "0"
   },
   jokeContent: {
-    marginBottom: "15px"
+    marginBottom: "30px",
+    fontSize: "1.1rem",
+    color: "black"
   },
   cardActions: {
     alignSelf: "flex-end"
