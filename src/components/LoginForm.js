@@ -9,19 +9,20 @@ const useStyles = makeStyles(theme => ({
   logginContainer: {
     backgroundColor: "#E76D00",
     height: "100vh",
-    margin: "-30px"
+    width: "100vw"
   },
   title: {
     color: "white",
     fontFamily: "'Gloria Hallelujah', cursive",
-    fontSize: "3rem"
+    fontSize: "3rem",
+    margin: "0px auto 25px auto"
   },
   formContainer: {
     display: "flex",
     backgroundColor: "white",
     flexDirection: "column",
-    width: "35%",
-    margin: "auto",
+    width: "28%",
+    margin: "100px auto",
     borderRadius: "5px"
   },
   signUpContainer: {
@@ -30,37 +31,52 @@ const useStyles = makeStyles(theme => ({
   },
   signUpButton: {
     fontSize: "1rem",
-    color: "DodgerBlue"
+    color: "DodgerBlue",
+    border: "none",
+    backgroundColor: "white"
   },
   inputField: {
     margin: "25px auto 0 auto;",
     border: "solid 1px gray",
-    background: "Gainsboro",
-    width: "55%",
+    background: "	#E8E8E8",
+    width: "47%",
     height: "50px",
     paddingLeft: "10px",
-    fontSize: "1rem"
+    fontSize: "1rem",
+    "&::-webkit-input-placeholder": {
+      color: "black"
+    }
   },
+
   passwordContainer: {
     display: "flex",
     flexDirection: "column",
     marginBottom: "25px"
   },
   forgotPasswordButton: {
-    margin: "auto",
+    margin: "10px auto",
     width: "58%",
     textAlign: "left",
     padding: "0",
-    color: "gray"
+    color: "gray",
+    border: "none",
+    backgroundColor: "white"
   },
   loginButton: {
-    margin: "0px auto 55px auto;",
+    margin: "0px auto 25px auto;",
     border: "solid 1px gray",
     background: "Gainsboro",
     width: "31%",
     padding: "11px 15px",
     fontSize: "1rem",
     borderRadius: "7px"
+  },
+  guestButton: {
+    color: "gray",
+    border: "none",
+    fontSize: "1rem",
+    marginBottom: "55px",
+    backgroundColor: "white"
   }
 }));
 
@@ -100,7 +116,7 @@ function LoginForm(props) {
             component="input"
             type="text"
             name="account"
-            placeholder="Email/Username"
+            placeholder="Username"
           />
           {touched.account && errors.account && (
             <p className="error">{errors.account}</p>
@@ -132,7 +148,8 @@ function LoginForm(props) {
             />
             <span className="checkmark" />
           </label> */}
-          <button className={classes.loginButton}>Login</button>
+          <button className={classes.loginButton}>Log In</button>
+          <button className={classes.guestButton}>Continue As Guest</button>
         </Form>
       </div>
     </div>
