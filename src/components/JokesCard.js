@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -62,21 +62,25 @@ function JokesCard({
   didUserCreate,
   username,
   jokeSetup,
-  jokePunchline
+  jokePunchline,
+  isFavorited
 }) {
   const classes = useStyles();
-  const [isFavorite, setIsFavorite] = useState("false");
+  const [isFavorite, setIsFavorite] = useState(isFavorited);
 
-  console.log(isFavorite + " " + jokeID);
+  console.log(isFavorited + " " + jokeID);
+
+  useEffect(() => {
+    setIsFavorite(isFavorited);
+  }, [isFavorited]);
 
   function toggleFavorite() {
     axios
       .post(`favorites/toggle/${jokeID}`)
       .then(res => {
         if (res !== undefined) {
-          console.log("Favorite: " + jokeID + " " + res.data);
-          setIsFavorite(res.data);
-          console.log(isFavorite);
+          console.log(res.data);
+          setIsFavorite(res.data.isFavorite);
         }
       })
       .catch(error => {
@@ -120,7 +124,7 @@ function JokesCard({
         </CardContent>
         <CardActions disableSpacing>
           <IconButton
-            className={isFavorite === "OK" ? classes.redHeart : null}
+            className={isFavorite === true ? classes.redHeart : null}
             onClick={toggleFavorite}
             aria-label="add to favorites"
           >
