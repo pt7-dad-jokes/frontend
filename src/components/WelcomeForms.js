@@ -10,7 +10,11 @@ function WelcomeForms({ setLoggedIn }) {
 
   return (
     <div>
-      <LoginForm formState={formState} setLoggedIn={setLoggedIn} />
+      <LoginForm
+        formState={formState}
+        setFormState={setFormState}
+        setLoggedIn={setLoggedIn}
+      />
       <ForgotPasswordForm formState={formState} />
       <RegForm formState={formState} />
       <WelcomeButtons formState={formState} setFormState={setFormState} />

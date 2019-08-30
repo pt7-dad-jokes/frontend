@@ -2,10 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-  "@font-face": {
-    fontFamily: "Kimberley",
-    src: "url(https://fonts.googleapis.com/css?family=Manjari&display=swap)"
-  },
   topBar: {
     backgroundColor: "#FF9E47",
     marginTop: "-30px",
