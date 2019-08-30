@@ -31,6 +31,7 @@ function Dashboard() {
           didUserCreate={false}
           jokeSetup={jokeData.setup}
           jokePunchline={jokeData.punchline}
+          isFavorited={jokeData.isFavorite}
         />
       );
     });
