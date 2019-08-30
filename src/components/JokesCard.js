@@ -72,7 +72,7 @@ function JokesCard({
 
   useEffect(() => {
     setIsFavorite(isFavorited);
-  }, []);
+  }, [isFavorited]);
 
   function toggleFavorite() {
     axios
