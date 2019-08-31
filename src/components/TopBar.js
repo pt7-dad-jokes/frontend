@@ -15,7 +15,7 @@ function TopBar() {
   const classes = useStyles();
   return (
     <div className={classes.topBar}>
-      <h2>HI HUNGRY, I'M DAD!</h2>
+      <h2 style={{ marginBottom: "0" }}>HI HUNGRY, I'M DAD!</h2>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
+import "./Styles/ProfilePage.css";
 import { deepOrange, deepPurple } from "@material-ui/core/colors";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
@@ -24,14 +24,21 @@ const useStyles = makeStyles({
     color: "#fff",
     backgroundColor: deepPurple[500]
   },
-  container: {
-    display: "flex",
-    justifyContent: "center"
-  },
+  container: {},
   profileContainer: {
     display: "flex",
+    flexDirection: "row"
+  },
+  categoryContainer: {
+    display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    width: "60%"
+  },
+  tabButton: {
+    maxWidth: "50%",
+    minWidth: "50%",
+    fontSize: "1.25rem",
+    color: "black"
   }
 });
 
@@ -65,9 +72,12 @@ function ProfilePage({ username, jokesCreated }) {
       ? favoriteJokeData.map(jokeData => {
           return (
             <JokesCard
-              didUserCreate={value === 0}
+              jokeID={jokeData.id}
+              username={jokeData.creator}
+              didUserCreate={false}
               jokeSetup={jokeData.setup}
               jokePunchline={jokeData.punchline}
+              isFavorited={true}
             />
           );
         })
@@ -78,9 +88,12 @@ function ProfilePage({ username, jokesCreated }) {
       ? createdJokeData.map(jokeData => {
           return (
             <JokesCard
-              didUserCreate={value === 0}
+              jokeID={jokeData.id}
+              username={jokeData.creator}
+              didUserCreate={false}
               jokeSetup={jokeData.setup}
               jokePunchline={jokeData.punchline}
+              isFavorited={false}
             />
           );
         })
@@ -90,23 +103,27 @@ function ProfilePage({ username, jokesCreated }) {
   return (
     <div>
       <TopBar />
-      <VerticalNav />
+      <div
+        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px" }}
+      ></div>
       <div className={classes.container}>
         <div className={classes.profileContainer}>
-          <Avatar className={classes.orangeAvatar}>{username[0]}</Avatar>
-          <Paper square>
-            <Tabs
-              value={value}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={handleChange}
-              aria-label="disabled tabs example"
-            >
-              <Tab label="Joke Wallet" />
-              <Tab label="Favorites" />
-            </Tabs>
-          </Paper>
-          <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
+          <VerticalNav />
+          <div className={classes.categoryContainer}>
+            <Paper square>
+              <Tabs
+                value={value}
+                indicatorColor="primary"
+                textColor="primary"
+                onChange={handleChange}
+                aria-label="disabled tabs example"
+              >
+                <Tab label="Joke Wallet" className={classes.tabButton} />
+                <Tab label="Favorites" className={classes.tabButton} />
+              </Tabs>
+            </Paper>
+            <div>{value === 0 ? showCreatedJokes() : showFavoriteJokes()}</div>
+          </div>
         </div>
       </div>
     </div>

@@ -109,6 +109,8 @@ function JokesCard({
       });
   }
 
+  console.log(username);
+
   return (
     <div>
       <Card className={classes.card}>
