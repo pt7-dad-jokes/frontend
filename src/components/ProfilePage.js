@@ -93,7 +93,7 @@ function ProfilePage({ username, jokesCreated }) {
       <VerticalNav />
       <div className={classes.container}>
         <div className={classes.profileContainer}>
-          <Avatar className={classes.orangeAvatar}>{username[0]}</Avatar>
+          {/* <Avatar className={classes.orangeAvatar}>{username[0]}</Avatar> */}
           <Paper square>
             <Tabs
               value={value}
