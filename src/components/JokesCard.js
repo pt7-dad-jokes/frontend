@@ -9,28 +9,46 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import MoodIcon from "@material-ui/icons/Mood";
-import MoodBadIcon from "@material-ui/icons/MoodBad";
-import CreateIcon from "@material-ui/icons/Create";
-import DeleteIcon from "@material-ui/icons/Delete";
+// import ShareIcon from "@material-ui/icons/Share";
+// import MoodIcon from "@material-ui/icons/Mood";
+// import MoodBadIcon from "@material-ui/icons/MoodBad";
+// import CreateIcon from "@material-ui/icons/Create";
+// import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
-    flexDirection: "column",
+    flexDirection: "row",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#FFE6CC",
+    border: "solid Silver 1px"
   },
   cardHeader: {
-    padding: "16px 0px",
+    padding: "16px 16px",
     width: "40px"
   },
   cardTop: {
     display: "flex",
-    justifyContent: "space-evenly",
-    width: "80%"
+    justifyContent: "baseline",
+    alignSelf: "baseline",
+    marginLeft: "2%"
+  },
+  cardContent: {
+    display: "flex",
+    flexDirection: "column",
+    width: "70%",
+    textAlign: "left",
+    marginLeft: "2%",
+    padding: "0"
+  },
+  jokeContent: {
+    marginBottom: "30px",
+    fontSize: "1.1rem",
+    color: "black"
+  },
+  cardActions: {
+    alignSelf: "flex-end"
   },
   media: {
     height: 0,
@@ -51,6 +69,9 @@ const useStyles = makeStyles(theme => ({
   },
   redHeart: {
     color: "red"
+  },
+  heartIcon: {
+    fontSize: "3rem"
   },
   remove: {
     display: "none"
@@ -88,16 +109,18 @@ function JokesCard({
       });
   }
 
+  console.log(username);
+
   return (
     <div>
       <Card className={classes.card}>
         <div className={classes.cardTop}>
-          <IconButton
+          {/* <IconButton
             aria-label="Delete Joke"
             className={didUserCreate ? null : classes.remove}
           >
             <DeleteIcon />
-          </IconButton>
+          </IconButton> */}
           <CardHeader
             className={classes.cardHeader}
             avatar={
@@ -106,39 +129,47 @@ function JokesCard({
               </Avatar>
             }
           />
-          <IconButton
+          {/* <IconButton
             aria-label="Edit Joke"
             className={didUserCreate ? null : classes.remove}
           >
             <CreateIcon />
-          </IconButton>
+          </IconButton> */}
         </div>
 
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+        <CardContent className={classes.cardContent}>
+          <h3>@{username}</h3>
+          <Typography
+            className={classes.jokeContent}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
             {jokeSetup}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            className={classes.jokeContent}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
             {jokePunchline}
           </Typography>
         </CardContent>
-        <CardActions disableSpacing>
+        <CardActions disableSpacing className={classes.cardActions}>
           <IconButton
             className={isFavorite === true ? classes.redHeart : null}
             onClick={toggleFavorite}
             aria-label="add to favorites"
           >
-            <FavoriteIcon />
+            <FavoriteIcon className={classes.heartIcon} />
           </IconButton>
-          <IconButton aria-label="Like the joke">
+          {/* <IconButton aria-label="Like the joke">
             <MoodIcon />
           </IconButton>
           <IconButton aria-label="Dislike the joke">
             <MoodBadIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
+          </IconButton> */}
         </CardActions>
       </Card>
     </div>

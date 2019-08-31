@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+
 import JokesCard from "./JokesCard";
 import TopBar from "./TopBar";
 import VerticalNav from "./VerticalNav";
 import axios from "axios";
 
+const useStyles = makeStyles(theme => ({
+  dashboardContainer: {
+    display: "flex"
+  },
+  jokesContainer: {
+    display: "flex",
+    flexDirection: "column",
+    width: "60%"
+  }
+}));
+
 function Dashboard() {
+  const classes = useStyles();
+
   // 3 form states login, forgotPassword and signup
   const [publicJokeData, setPublicJokeData] = useState([{}]);
 
@@ -39,11 +54,11 @@ function Dashboard() {
 
   return (
     <div>
-      <div>
-        <TopBar></TopBar>
+      <TopBar />
+      <div className={classes.dashboardContainer}>
         <VerticalNav />
+        <div className={classes.jokesContainer}>{showPublicJokes()}</div>
       </div>
-      {showPublicJokes()}
     </div>
   );
 }

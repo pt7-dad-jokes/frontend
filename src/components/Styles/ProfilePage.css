@@ -1,0 +1,8 @@
+.MuiTabs-flexContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.MuiTab-wrapper {
+  color: black;
+}
