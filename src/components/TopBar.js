@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
   topBar: {
     backgroundColor: "#FF9E47",
-    padding: "1px",
+    marginTop: "-30px",
     color: "white",
     fontFamily: "'Gloria Hallelujah', cursive",
     fontSize: "1.5rem"
