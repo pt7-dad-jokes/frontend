@@ -3,13 +3,31 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles(theme => ({
+  formContainer: {
+    display: "flex",
+    backgroundColor: "black",
+    flexDirection: "column",
+    width: "28%",
+    margin: "100px auto",
+    borderRadius: "5px",
+    
+  },
+  title: {
+    color: "black",
+    fontFamily: "'Gloria Hallelujah', cursive",
+    fontSize: "3rem",
+    margin: "-950px auto 25px auto"
+  },
+}));
 
 function AddJokeForm({ values, errors, touched }) {
-
+  const classes = useStyles();
   return (
-    <Form>
-      <h1>Create your very own Dad Jokes</h1>
+    <Form className={classes.formContainer}>
+      <h1 className={classes.title}>Create your very own Dad Jokes</h1>
       <label>
         <Field
           type="checkbox"
@@ -77,8 +95,8 @@ const formikHOC = withFormik({
     axios
       .post("/jokes", {
         title: values.joke_title,
-        setup: values.joke_content,
-        punchline: values.twoliner || "",
+        setup: values.oneliner,
+        punchline: values.joke_content|| "",
         isPublic: !values.privJoke
        })
       .then(res => {

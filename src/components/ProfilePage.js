@@ -24,7 +24,9 @@ const useStyles = makeStyles({
     color: "#fff",
     backgroundColor: deepPurple[500]
   },
-  container: {},
+  container: {
+    height: "100%"
+  },
   profileContainer: {
     display: "flex",
     flexDirection: "row"
@@ -109,7 +111,7 @@ function ProfilePage({ username, jokesCreated }) {
     <div>
       <TopBar />
       <div
-        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px" }}
+        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px"}}
       ></div>
       <div className={classes.container}>
         <div className={classes.profileContainer}>

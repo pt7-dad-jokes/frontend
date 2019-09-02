@@ -1,7 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./Styles/Modal.css";
 import AddJokeForm from './AddJokeForm'
 import styled from 'styled-components';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  regContainer: {
+    backgroundColor: "#E76D00",
+    height: "100%",
+    width: "100vw"
+  },
+}));
 
 const Button = styled.button`
     padding: 12px 20px;
@@ -36,3 +46,4 @@ const Modal = ({ isShowing, hide }) => isShowing ? ReactDOM.createPortal(
 ) : null;
 
 export default Modal;
+
