@@ -139,14 +139,14 @@ function JokesCard({
 
         <CardContent className={classes.cardContent}>
           <h3>@{username}</h3>
-          <Typography
+          {/* <Typography
             className={classes.jokeContent}
             variant="body2"
             color="textSecondary"
             component="p"
           >
             {jokeSetup}
-          </Typography>
+          </Typography> */}
           <Typography
             className={classes.jokeContent}
             variant="body2"

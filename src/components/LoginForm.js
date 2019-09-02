@@ -5,11 +5,12 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+
 const useStyles = makeStyles(theme => ({
   logginContainer: {
     backgroundColor: "#E76D00",
-    height: "100vh",
-    width: "100vw"
+    height: "100%",
+    width: "100%"
   },
   title: {
     color: "white",
@@ -104,12 +105,14 @@ function LoginForm(props) {
           </h3>
           <div className={classes.signUpContainer}>
             <p style={{ margin: "25px 0px" }}>Don't have an account?</p>
+
             <button
               onClick={() => setFormState("signup")}
               className={classes.signUpButton}
             >
               Sign Up
             </button>
+
           </div>
           <Field
             className={classes.inputField}
