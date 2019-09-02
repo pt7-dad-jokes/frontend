@@ -9,10 +9,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-// import ShareIcon from "@material-ui/icons/Share";
-// import MoodIcon from "@material-ui/icons/Mood";
-// import MoodBadIcon from "@material-ui/icons/MoodBad";
-// import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
 
@@ -143,24 +139,10 @@ function JokesCard({
               </Avatar>
             }
           />
-          {/* <IconButton
-            aria-label="Edit Joke"
-            className={didUserCreate ? null : classes.remove}
-          >
-            <CreateIcon />
-          </IconButton> */}
         </div>
 
         <CardContent className={classes.cardContent}>
           <h3>@{username}</h3>
-          {/* <Typography
-            className={classes.jokeContent}
-            variant="body2"
-            color="textSecondary"
-            component="p"
-          >
-            {jokeSetup}
-          </Typography> */}
           <Typography
             className={classes.jokeContent}
             variant="body2"
@@ -184,12 +166,6 @@ function JokesCard({
           >
             <FavoriteIcon className={classes.heartIcon} />
           </IconButton>
-          {/* <IconButton aria-label="Like the joke">
-            <MoodIcon />
-          </IconButton>
-          <IconButton aria-label="Dislike the joke">
-            <MoodBadIcon />
-          </IconButton> */}
         </CardActions>
       </Card>
     </div>

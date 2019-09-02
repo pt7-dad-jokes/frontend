@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
-// import WelcomeButtons from "./WelcomeButtons";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 import RegForm from "./RegForm";
 
@@ -17,7 +16,6 @@ function WelcomeForms({ setLoggedIn }) {
       />
       <ForgotPasswordForm formState={formState} setFormState={setFormState} />
       <RegForm formState={formState} setFormState={setFormState} />
-      {/* <WelcomeButtons formState={formState} setFormState={setFormState} /> */}
     </div>
   );
 }
