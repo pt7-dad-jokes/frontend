@@ -77,7 +77,7 @@ function RegForm({ errors, touched, formState, setFormState }) {
             <p style={{ margin: "25px 0px" }}>Already have an account?</p>
 
             <button
-              // onClick={() => setFormState("login")}
+              onClick={() => setFormState("login")}
               className={classes.loginButton}
             >
               Login
