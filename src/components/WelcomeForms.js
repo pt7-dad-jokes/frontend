@@ -15,8 +15,8 @@ function WelcomeForms({ setLoggedIn }) {
         setFormState={setFormState}
         setLoggedIn={setLoggedIn}
       />
-      <ForgotPasswordForm formState={formState} />
-      <RegForm formState={formState} />
+      <ForgotPasswordForm formState={formState} setFormState={setFormState} />
+      <RegForm formState={formState} setFormState={setFormState} />
       {/* <WelcomeButtons formState={formState} setFormState={setFormState} /> */}
     </div>
   );
