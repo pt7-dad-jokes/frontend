@@ -5,7 +5,6 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-
 const useStyles = makeStyles(theme => ({
   logginContainer: {
     backgroundColor: "#E76D00",
@@ -85,10 +84,6 @@ function LoginForm(props) {
   const { errors, touched, formState, setFormState } = props;
   const classes = useStyles();
 
-  // function changeDisplay() {
-  //   return formState !== "login" ? { display: "none" } : { display: "block" };
-  // }
-
   return (
     <div className={classes.logginContainer}>
       <div
@@ -112,7 +107,6 @@ function LoginForm(props) {
             >
               Sign Up
             </button>
-
           </div>
           <Field
             className={classes.inputField}
@@ -142,15 +136,6 @@ function LoginForm(props) {
               Forgot Password?
             </button>
           </div>
-          {/* <label className="checkbox-container">
-            Remember Me
-            <Field
-              type="checkbox"
-              name="rememberMe"
-              checked={values.rememberMe}
-            />
-            <span className="checkmark" />
-          </label> */}
           <button className={classes.loginButton}>Log In</button>
           <button className={classes.guestButton}>Continue As Guest</button>
         </Form>
