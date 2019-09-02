@@ -9,8 +9,8 @@ import axios from "axios";
 const useStyles = makeStyles(theme => ({
   logginContainer: {
     backgroundColor: "#E76D00",
-    height: "100%",
-    width: "100%"
+    height: "100vh",
+    width: "100vw"
   },
   title: {
     color: "white",
