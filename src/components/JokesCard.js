@@ -129,7 +129,7 @@ function JokesCard({
       });
   }
 
-  console.log(username);
+  console.log(didUserCreate);
 
   return (
     <div className={isDeleted ? classes.remove : null}>

@@ -96,7 +96,7 @@ function ProfilePage({ username, jokesCreated }) {
               <JokesCard
                 jokeID={jokeData.id}
                 username={jokeData.creator}
-                didUserCreate={false}
+                didUserCreate={true}
                 jokeSetup={jokeData.setup}
                 jokePunchline={jokeData.punchline}
                 isFavorited={false}
@@ -111,7 +111,7 @@ function ProfilePage({ username, jokesCreated }) {
     <div>
       <TopBar />
       <div
-        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px"}}
+        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px" }}
       ></div>
       <div className={classes.container}>
         <div className={classes.profileContainer}>
