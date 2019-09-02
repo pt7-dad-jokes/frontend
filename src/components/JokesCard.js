@@ -13,7 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 // import MoodIcon from "@material-ui/icons/Mood";
 // import MoodBadIcon from "@material-ui/icons/MoodBad";
 // import CreateIcon from "@material-ui/icons/Create";
-// import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
@@ -48,6 +48,8 @@ const useStyles = makeStyles(theme => ({
     color: "black"
   },
   cardActions: {
+    display: "flex",
+    flexDirection: "column",
     alignSelf: "flex-end"
   },
   media: {
@@ -73,6 +75,9 @@ const useStyles = makeStyles(theme => ({
   heartIcon: {
     fontSize: "3rem"
   },
+  trashIcon: {
+    fontSize: "2.5rem"
+  },
   remove: {
     display: "none"
   }
@@ -88,8 +93,11 @@ function JokesCard({
 }) {
   const classes = useStyles();
   const [isFavorite, setIsFavorite] = useState(isFavorited);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   console.log(isFavorited + " " + jokeID);
+
+  console.log(didUserCreate);
 
   useEffect(() => {
     setIsFavorite(isFavorited);
@@ -109,18 +117,24 @@ function JokesCard({
       });
   }
 
-  console.log(username);
+  function deleteJoke() {
+    axios
+      .delete(`jokes/single/${jokeID}`)
+      .then(res => {
+        console.log("delete");
+        setIsDeleted(true);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  console.log(didUserCreate);
 
   return (
-    <div>
+    <div className={isDeleted ? classes.remove : null}>
       <Card className={classes.card}>
         <div className={classes.cardTop}>
-          {/* <IconButton
-            aria-label="Delete Joke"
-            className={didUserCreate ? null : classes.remove}
-          >
-            <DeleteIcon />
-          </IconButton> */}
           <CardHeader
             className={classes.cardHeader}
             avatar={
@@ -157,6 +171,12 @@ function JokesCard({
           </Typography>
         </CardContent>
         <CardActions disableSpacing className={classes.cardActions}>
+          <IconButton
+            aria-label="Delete Joke"
+            className={didUserCreate === true ? null : classes.remove}
+          >
+            <DeleteIcon className={classes.trashIcon} onClick={deleteJoke} />
+          </IconButton>
           <IconButton
             className={isFavorite === true ? classes.redHeart : null}
             onClick={toggleFavorite}

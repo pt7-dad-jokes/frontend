@@ -86,27 +86,32 @@ function ProfilePage({ username, jokesCreated }) {
       : null;
   }
   function showCreatedJokes() {
-    return Object.keys(createdJokeData[0]).length !== 0
-      ? createdJokeData.map(jokeData => {
-          return (
-            <JokesCard
-              jokeID={jokeData.id}
-              username={jokeData.creator}
-              didUserCreate={false}
-              jokeSetup={jokeData.setup}
-              jokePunchline={jokeData.punchline}
-              isFavorited={false}
-            />
-          );
-        })
-      : null;
+    console.log(createdJokeData[0]);
+    if (createdJokeData[0] === undefined) {
+      return null;
+    } else {
+      return Object.keys(createdJokeData[0]).length !== 0
+        ? createdJokeData.map(jokeData => {
+            return (
+              <JokesCard
+                jokeID={jokeData.id}
+                username={jokeData.creator}
+                didUserCreate={true}
+                jokeSetup={jokeData.setup}
+                jokePunchline={jokeData.punchline}
+                isFavorited={false}
+              />
+            );
+          })
+        : null;
+    }
   }
 
   return (
     <div>
       <TopBar />
       <div
-        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px"}}
+        style={{ backgroundColor: "dodgerblue", width: "100%", height: "10px" }}
       ></div>
       <div className={classes.container}>
         <div className={classes.profileContainer}>

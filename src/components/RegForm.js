@@ -54,15 +54,14 @@ const useStyles = makeStyles(theme => ({
     padding: "11px 15px",
     fontSize: "1rem",
     borderRadius: "7px"
-  },
+  }
 }));
 
 function RegForm({ errors, touched, formState, setFormState }) {
   const classes = useStyles();
   return (
     <div className={classes.regContainer}>
-      <div 
-
+      <div
         style={
           formState === "signup" ? { display: "block" } : { display: "none" }
         }
@@ -83,74 +82,72 @@ function RegForm({ errors, touched, formState, setFormState }) {
             >
               Login
             </button>
-
           </div>
-        <div>
-          {touched.email && errors.email && <p>{errors.email}</p>}
-          <Field
-            className={classes.inputField}
-            type="email"
-            name="email"
-            placeholder="Email"
-          />
-        </div>
-        <div>
-          {touched.username && errors.username && <p>{errors.username}</p>}
-          <Field
-            className={classes.inputField}
-            type="text"
-            name="username"
-            placeholder="Username"
-          />
-        </div>
-        <div>
-          {touched.password && errors.password && <p>{errors.password}</p>}
-          <Field
-            className={classes.inputField}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-        </div>
-        <div>
-          {touched.first_name && errors.first_name && <p>{errors.first_name}</p>}
-          <Field
-            className={classes.inputField}
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-          />
-        </div>
-        <div>
-          {touched.last_name && errors.last_name && <p>{errors.last_name}</p>}
-          <Field
-            className={classes.inputField}
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
-          />
-        </div>
-        <div>
-          {touched.age && errors.age && <p>{errors.age}</p>}
-          <Field
-            className={classes.inputField}
-            type="text"
-            name="age"
-            placeholder="Age"
-          />
-        </div>
-        <button 
-        
-        className={classes.registerButton}>Register Now!
-        </button>
-     </Form>
+          <div>
+            {touched.email && errors.email && <p>{errors.email}</p>}
+            <Field
+              className={classes.inputField}
+              type="email"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <div>
+            {touched.username && errors.username && <p>{errors.username}</p>}
+            <Field
+              className={classes.inputField}
+              type="text"
+              name="username"
+              placeholder="Username"
+            />
+          </div>
+          <div>
+            {touched.password && errors.password && <p>{errors.password}</p>}
+            <Field
+              className={classes.inputField}
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+          </div>
+          <div>
+            {touched.first_name && errors.first_name && (
+              <p>{errors.first_name}</p>
+            )}
+            <Field
+              className={classes.inputField}
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+            />
+          </div>
+          <div>
+            {touched.last_name && errors.last_name && <p>{errors.last_name}</p>}
+            <Field
+              className={classes.inputField}
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+            />
+          </div>
+          <div>
+            {touched.age && errors.age && <p>{errors.age}</p>}
+            <Field
+              className={classes.inputField}
+              type="text"
+              name="age"
+              placeholder="Age"
+            />
+          </div>
+          <button className={classes.registerButton}>Register Now!</button>
+        </Form>
       </div>
     </div>
   );
 }
 
 const FormikRegForm = withFormik({
-  mapPropsToValues({ email, username, password, first_name,last_name,age }) {
+  mapPropsToValues({ email, username, password, first_name, last_name, age }) {
     return {
       email: email || "",
       username: username || "",
@@ -164,17 +161,13 @@ const FormikRegForm = withFormik({
     email: Yup.string()
       .email("Email not valid")
       .required("Please enter an email"),
-    username: Yup.string()
-      .required("Please enter a username"),
+    username: Yup.string().required("Please enter a username"),
     password: Yup.string()
       .min(6, "Password must be 6 characters or longer")
       .required("Please enter a password"),
-    first_name: Yup.string()
-      .required("Please enter your first name"),
-    last_name: Yup.string()
-      .required("Please enter your last name"),
-    age: Yup.string()
-      .required("Please enter your age"),
+    first_name: Yup.string().required("Please enter your first name"),
+    last_name: Yup.string().required("Please enter your last name"),
+    age: Yup.string().required("Please enter your age")
   }),
   handleSubmit(values, { setStatus, resetForm }) {
     axios
